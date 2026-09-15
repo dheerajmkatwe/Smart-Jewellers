@@ -1,5 +1,6 @@
 name = "smart-jewellers-saas"
 compatibility_date = "2026-09-15"
+pages_build_output_dir = "dist"
 
 [vars]
 ENVIRONMENT = "development"
@@ -40,7 +41,7 @@ APP_NAME = "Smart Jewellers SaaS"
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "sj_db_prod"
-database_id = "your-prod-d1-id"
+database_id = "9c65c9d6-d560-4c31-b951-3cb20d563e59"
 migrations_dir = "migrations"
 
 [[env.production.r2_buckets]]
