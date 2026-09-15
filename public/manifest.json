@@ -1,0 +1,33 @@
+{
+  "short_name": "Smart Jewellers",
+  "name": "Smart Jewellers — Multi-Tenant Jewellery ERP SaaS",
+  "description": "Production-ready Jewellery ERP with POS, Stock Ledger, Artisans & Multi-Shop Onboarding.",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0b0c0f",
+  "theme_color": "#c9a24b",
+  "display": "standalone",
+  "orientation": "any",
+  "categories": ["business", "finance", "productivity"],
+  "shortcuts": [
+    {
+      "name": "New Invoice / POS",
+      "short_name": "POS Billing",
+      "description": "Open POS Quick Billing",
+      "url": "/?page=billing"
+    },
+    {
+      "name": "Rate Master",
+      "short_name": "Gold Rates",
+      "description": "View Daily Gold & Silver Rates",
+      "url": "/?page=rates"
+    }
+  ]
+}

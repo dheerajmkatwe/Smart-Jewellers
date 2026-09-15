@@ -1,0 +1,48 @@
+name = "smart-jewellers-saas"
+compatibility_date = "2026-09-15"
+
+[vars]
+ENVIRONMENT = "development"
+APP_NAME = "Smart Jewellers SaaS (Dev)"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sj_db_dev"
+database_id = "mock-dev-id"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sj-logos-dev"
+
+# STAGING EDGE PLATFORM
+[env.staging]
+[env.staging.vars]
+ENVIRONMENT = "staging"
+APP_NAME = "Smart Jewellers SaaS (Beta)"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "sj_db_staging"
+database_id = "your-staging-d1-id"
+migrations_dir = "migrations"
+
+[[env.staging.r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sj-logos-staging"
+
+# PRODUCTION EDGE PLATFORM
+[env.production]
+[env.production.vars]
+ENVIRONMENT = "production"
+APP_NAME = "Smart Jewellers SaaS"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "sj_db_prod"
+database_id = "your-prod-d1-id"
+migrations_dir = "migrations"
+
+[[env.production.r2_buckets]]
+binding = "BUCKET"
+bucket_name = "sj-logos-prod"
