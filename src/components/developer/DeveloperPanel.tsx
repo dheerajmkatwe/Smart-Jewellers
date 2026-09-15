@@ -17,12 +17,21 @@ export const DeveloperPanel: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Fallback Frontend Authentication Check
-    if (username === 'developerhubhai01' && password === 'developerhubhai01') {
-      setIsAuthenticated(true);
-      fetchClients();
-    } else {
-      alert('Invalid Developer Credentials');
+    try {
+      const res = await fetch('/api/auth/developer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      
+      if (res.ok) {
+        setIsAuthenticated(true);
+        fetchClients();
+      } else {
+        alert('Invalid Developer Credentials');
+      }
+    } catch (err) {
+      alert('Network Error. Cannot connect to Cloudflare Edge API.');
     }
     
     setLoading(false);
@@ -35,11 +44,7 @@ export const DeveloperPanel: React.FC = () => {
         const json = await res.json();
         if (json.success) setClients(json.clients);
       } else {
-        // Mock data for local Vite environment since Cloudflare Workers aren't running natively on Port 3000
-        setClients([
-          { id: 't-123', name: 'Smart Jewellers (Main)', phone: '+919876543210', email: 'rajesh@smart.com', trial_ends_at: new Date(Date.now() + 86400000 * 12).toISOString(), subscription_status: 'trialing' },
-          { id: 't-456', name: 'Heritage Gold', phone: '+919998887776', email: 'owner@heritage.com', trial_ends_at: new Date(Date.now() - 86400000 * 2).toISOString(), subscription_status: 'expired' }
-        ]);
+        setMsg('Failed to load registered tenants. Unauthorized.');
       }
     } catch (err) { }
   };
